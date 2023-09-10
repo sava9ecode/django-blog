@@ -50,7 +50,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "superblog.urls"
+ROOT_URLCONF = "django_diy_blog.urls"
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "superblog.wsgi.application"
+WSGI_APPLICATION = "django_diy_blog.wsgi.application"
 
 
 # Database
