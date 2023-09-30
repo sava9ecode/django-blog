@@ -16,8 +16,8 @@ class BlogCommentInline(admin.TabularInline):
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
     list_display = (
-        "author",
         "name",
+        "author",
         "post_date",
     )
     list_filter = ("author", "post_date")
