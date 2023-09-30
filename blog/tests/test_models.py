@@ -68,7 +68,7 @@ class BlogModelTest(TestCase):
 
     def test_get_absolute_url(self):
         blog = Blog.objects.get(id=1)
-        self.assertEqual(blog.get_absolute_url(), "/blog/blog/1/")
+        self.assertEqual(blog.get_absolute_url(), "/blog/blog/1")
 
 
 class BlogCommentModelTest(TestCase):
@@ -82,6 +82,7 @@ class BlogCommentModelTest(TestCase):
             user=test_user1,
             bio="testbio",
         )
+        blog_author.save()
         blog_test = Blog.objects.create(
             name="Test Blog 1",
             author=blog_author,
