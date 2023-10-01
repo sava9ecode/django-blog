@@ -10,8 +10,13 @@ def index(request):
     """
     View function for home page of site.
     """
+    request.session['cnt_visits'] = 1 + request.session.get('cnt_visits', 0)
+    context = {
+        "cnt_visits": request.session['cnt_visits'],
+        "request_session": request.session,
+    }
     # Render the HTML template index.html
-    return render(request, "index.html")
+    return render(request, "index.html", context)
 
 
 class BlogListView(generic.ListView):

@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<h1>DIY Blog Home</h1>
-
-<p>Welcome to <em>DIY Blog</em>, a very basic Django blogging website.
+    <h1>DIY Blog Home</h1>
+    <p>Welcome to <em>DIY Blog</em>, a very basic Django blogging website.</p>
+    <p>You've visited this page {{ cnt_visits }}{% if cnt_visits == 1 %} time{% else %} times{% endif %}.</p>
 
 {% endblock %}
