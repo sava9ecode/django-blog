@@ -68,7 +68,7 @@ class BlogComment(models.Model):
     )
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     # Foreign Key used because BlogComment can only have one author/User, but users can have multiple comments
-    post_date = models.DateField(default=date.today)
+    post_date = models.DateTimeField(auto_now_add=True)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
 
     class Meta:

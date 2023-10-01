@@ -2,6 +2,7 @@ from django.views import generic
 from django.urls import reverse
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Blog, BlogAuthor, BlogComment
 
@@ -10,9 +11,9 @@ def index(request):
     """
     View function for home page of site.
     """
-    request.session['cnt_visits'] = 1 + request.session.get('cnt_visits', 0)
+    request.session["cnt_visits"] = 1 + request.session.get("cnt_visits", 0)
     context = {
-        "cnt_visits": request.session['cnt_visits'],
+        "cnt_visits": request.session["cnt_visits"],
         "request_session": request.session,
     }
     # Render the HTML template index.html
@@ -25,6 +26,23 @@ class BlogListView(generic.ListView):
     """
 
     model = Blog
+    paginate_by = 5
+
+
+class BlogDetailView(generic.DetailView):
+    """
+    Generic class-based detail view for a blog.
+    """
+
+    model = Blog
+
+
+class BloggerListView(generic.ListView):
+    """
+    Generic class-based view for a list of bloggers.
+    """
+
+    model = BlogAuthor
     paginate_by = 5
 
 
@@ -55,24 +73,7 @@ class BlogListByAuthorView(generic.ListView):
         return context
 
 
-class BlogDetailView(generic.DetailView):
-    """
-    Generic class-based detail view for a blog.
-    """
-
-    model = Blog
-
-
-class BloggerListView(generic.ListView):
-    """
-    Generic class-based view for a list of bloggers.
-    """
-
-    model = BlogAuthor
-    paginate_by = 5
-
-
-class BlogCommentCreate(CreateView):
+class BlogCommentCreate(LoginRequiredMixin, CreateView):
     """
     Form for adding a blog comment.
     """

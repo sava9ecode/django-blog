@@ -32,6 +32,7 @@ urlpatterns = [
     path(f"{env('SECRET_ADMIN_URL')}/admin/", admin.site.urls),
     path("", RedirectView.as_view(url="blog/", permanent=True)),
     path("blog/", include("blog.urls")),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
