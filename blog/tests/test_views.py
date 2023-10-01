@@ -1,11 +1,11 @@
-from django.test import TestCase, SimpleTestCase
+from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 
 from blog.models import Blog, BlogAuthor
 
 
-class IndexViewTest(SimpleTestCase):
+class IndexViewTest(TestCase):
     def test_view_exists_at_desired_location(self):
         response = self.client.get("/blog/")
         self.assertEqual(response.status_code, 200)
