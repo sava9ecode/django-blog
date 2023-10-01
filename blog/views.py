@@ -36,8 +36,7 @@ class BlogListByAuthorView(generic.ListView):
         """
         Return list of Blog objects created by BlogAuthor (author id specified in URL)
         """
-        id = self.kwargs["pk"]
-        target_author = get_object_or_404(BlogAuthor, pk=id)
+        target_author = get_object_or_404(BlogAuthor, pk=self.kwargs["pk"])
         return Blog.objects.filter(author=target_author)
 
     def get_context_data(self, **kwargs):
