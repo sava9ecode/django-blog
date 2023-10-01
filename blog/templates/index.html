@@ -3,7 +3,16 @@
 {% block content %}
 
     <h1>DIY Blog Home</h1>
-    <p>Welcome to <em>DIY Blog</em>, a very basic Django blogging website.</p>
+    <p>Welcome to <em>DIY Blog</em>, a very basic Django blogging website developed as an <a href="https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/django_assessment_blog">assessment task</a> for the Django learning module on the Mozilla Developer Network.</p>
+
+    <h2>UML Models</h2>
+    <p>An UML diagram of the site's Django model structure is shown below.</p>
+    <div>
+        {% load static %}
+        <img src={% static "images/diy_django_mini_blog_models.png" %} alt="An UML diagram of the site's Django model structure" style="width:600px;height:500px;">
+    </div>
+
+    <h2>Reload current page</h2>
     <p>You've visited this page {{ cnt_visits }}{% if cnt_visits == 1 %} time{% else %} times{% endif %}.</p>
 
 {% endblock %}
